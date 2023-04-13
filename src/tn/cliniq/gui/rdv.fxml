@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="452.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.cliniq.gui.RdvController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <VBox layoutX="21.0" layoutY="129.0" prefHeight="206.0" prefWidth="61.0" spacing="15.0">
+         <children>
+            <Label textFill="#26bcbc" />
+            <Label text="NOM" textFill="#26bcbc" />
+            <Label text="DATE RDV" textFill="#26bcbc" />
+         </children>
+      </VBox>
+      <VBox layoutX="87.0" layoutY="120.0" prefHeight="206.0" prefWidth="231.0" spacing="7.0">
+         <children>
+            <TextField fx:id="tfid" opacity="0.0" />
+            <TextField fx:id="tfnom" layoutX="10.0" layoutY="10.0" />
+            <DatePicker fx:id="dpdate" prefHeight="41.0" prefWidth="235.0" promptText=" entrez votre date de rdv" />
+         </children>
+      </VBox>
+      <TableView fx:id="tvrdv" layoutX="332.0" layoutY="93.0" onSort="#viewrdv" prefHeight="260.0" prefWidth="329.0">
+        <columns>
+          <TableColumn fx:id="colid" prefWidth="46.0" text="ID" />
+          <TableColumn fx:id="colnom" prefWidth="118.0" text="NOM" />
+            <TableColumn fx:id="coldate" prefWidth="164.0" text="DATE RDV" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnadd" layoutX="25.0" layoutY="374.0" mnemonicParsing="false" onAction="#add" prefHeight="32.0" prefWidth="142.0" text="prendre rdv" textFill="#26bcbc" />
+      <Button fx:id="btnupdate" layoutX="203.0" layoutY="374.0" mnemonicParsing="false" onAction="#update" prefHeight="32.0" prefWidth="142.0" text="modifier" textFill="#26bcbc" />
+      <Button fx:id="btndelete" layoutX="390.0" layoutY="374.0" mnemonicParsing="false" onAction="#delete" prefHeight="32.0" prefWidth="157.0" text="supprimer" textFill="#26bcbc" />
+      <Label layoutX="172.0" layoutY="27.0" prefHeight="41.0" prefWidth="388.0" text="PRENDRE UN RENDEZ-VOUS" textFill="#26bcbc">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="img1" fitHeight="114.0" fitWidth="160.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image0%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img2" fitHeight="25.0" fitWidth="29.0" layoutX="132.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image0%20(1).jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img3" fitHeight="25.0" fitWidth="35.0" layoutX="306.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image1%20(2).jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img4" fitHeight="25.0" fitWidth="32.0" layoutX="503.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image2%20(1).jpeg" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>
