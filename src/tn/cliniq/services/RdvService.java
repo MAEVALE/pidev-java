@@ -50,6 +50,23 @@ public class RdvService implements Interface{
             System.out.println(ex.getMessage());
         }
     }
+    
+   public List<Rdv> chercherRdvParNom(String nom) {
+    List<Rdv> rdvs = new ArrayList<>();
+    String req = "SELECT * FROM rdv WHERE nom LIKE '%" + nom + "%'";
+    try {
+        Statement ste = cnx.createStatement();
+        ResultSet result = ste.executeQuery(req);
+        while (result.next()) {
+            Rdv rdv = new Rdv(result.getInt("id"), result.getString("nom"), result.getString("date"));
+            rdvs.add(rdv);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex);
+    }
+    return rdvs;
+}
+
 
     @Override
     public void supprimerRdv(int id) {

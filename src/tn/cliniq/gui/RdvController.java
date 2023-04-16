@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import static java.time.temporal.TemporalQueries.localDate;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -78,18 +79,19 @@ public class RdvController implements Initializable {
     private ImageView img3;
     @FXML
     private ImageView img4;
+    @FXML
+    private TextField tfsearch;
+    @FXML
+    private Button btnsearch;
     
   
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        viewrdv();
+       coldate.setCellValueFactory(new PropertyValueFactory<>("date"));
     }   
     
-    private boolean Validchamp(TextField T){
-        return !T.getText().isEmpty() && T.getLength() < 2;
-        //return !T.getText().isEmpty();
-    }
     
  
 
@@ -99,20 +101,14 @@ public class RdvController implements Initializable {
         String nom_rdv = tfnom.getText();
         String date = dpdate.getValue().toString();
         
-        
-         if (nom_rdv.isEmpty()) {
-    // Afficher un message d'erreur si un champ est vide
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle("Erreur");
-    alert.setHeaderText(null);
-    alert.setContentText("Veuillez remplir tous les champs");
-    alert.showAndWait();
-    return ;
-}
-        
-
-
-         
+        if (tfnom.getText().length() < 1) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText("VEUILLEZ REMPLIR VOTRE NOM");
+        alert.showAndWait();
+        return;
+    } else{}  
         Rdv r = new Rdv(0, nom_rdv, date);
         RdvService rs = new RdvService();
         rs.ajouterRdv(r);
@@ -189,6 +185,18 @@ public class RdvController implements Initializable {
             return row;
         });
     }
+
+    @FXML
+    private void search(ActionEvent event) {
+        String nom = tfsearch.getText();
+        RdvService rs = new RdvService();
+        List<Rdv> rdvs = rs.chercherRdvParNom(nom);
+        rdv.clear();
+        rdv.addAll(rdvs);
+        tvrdv.setItems(rdv);
+    }
+ 
+    
 }
         
        
