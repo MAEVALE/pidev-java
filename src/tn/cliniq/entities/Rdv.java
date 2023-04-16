@@ -16,21 +16,31 @@ public class Rdv {
     private int id;
     private String nom;
     private String date;
+  //  private Category category;
 
     public Rdv(int id, String nom, String date) {
         this.id = id;
         this.nom = nom;
         this.date = date;
+        // this.category = category;
     }
 
     public int getId() {
         return id;
     }
+    
+    
 
     @Override
     public String toString() {
-        return "Rdv{" + "id=" + id + ", nom=" + nom + ", date=" + date + '}';
+        return "Rdv{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", date='" + date + '\'' +
+            //    ", category=" + category +
+                '}';
     }
+    
 
     public void setId(int id) {
         this.id = id;
